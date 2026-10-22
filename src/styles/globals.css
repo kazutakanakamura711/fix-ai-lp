@@ -1,6 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source(none);
+
+@source "../";
+@source "../../index.html";
+
+@theme {
+  --font-sans:
+    Inter, "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --text-sm--line-height: 1.25rem;
+
+  /* Preserve the existing palette when generating Tailwind utilities. */
+  --color-blue-300: #93c5fd;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-slate-300: #cbd5e1;
+  --color-cyan-300: #67e8f9;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
 
 :root {
   color-scheme: dark;
@@ -51,9 +87,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-button,
-a {
-  font: inherit;
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: #e5e7eb;
+  }
+
+  button,
+  a {
+    font: inherit;
+  }
 }
 
 button {
